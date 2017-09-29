@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/currencyService2" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/currencyService2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="CurrencyCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AUD" />
+      <xs:enumeration value="BGN" />
+      <xs:enumeration value="EUR" />
+      <xs:enumeration value="SEK" />
+      <xs:enumeration value="DKK" />
+      <xs:enumeration value="USD" />
+      <xs:enumeration value="NOK" />
+      <xs:enumeration value="CZK" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CurrencyCode" nillable="true" type="tns:CurrencyCode" />
+  <xs:complexType name="ArrayOfCurrency">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Currency" nillable="true" type="tns:Currency" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCurrency" nillable="true" type="tns:ArrayOfCurrency" />
+  <xs:complexType name="Currency">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="tns:CurrencyCode" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rate" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Currency" nillable="true" type="tns:Currency" />
+</xs:schema>
